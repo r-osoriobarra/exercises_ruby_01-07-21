@@ -5,10 +5,14 @@ class User
     attr_reader :name, :bank_account
 
     def initialize(name, bank_account)
+        @name = name
+        valid_array(bank_account)
+    end
+
+    def valid_array(bank_account)
         if bank_account.class != Array and bank_account.empty? 
-            raise "Se require un array con al menos una cuenta bancaria" 
+            raise "Se require un array con al menos una cuenta bancaria"
         else
-            @name = name
             @bank_account = bank_account        
         end
     end
@@ -37,6 +41,7 @@ class BankAccount
     end
 
     def transfer(ammount, bank_account)
+        
         raise "Saldo insuficiente" if ammount > self.balance 
         self.balance -= ammount
         bank_account.balance += ammount
@@ -47,7 +52,7 @@ account1 = BankAccount.new('Banco Estado', 987, 5000)
 account2 = BankAccount.new('Santander', 456, 5000)
 account3 = BankAccount.new('Santander', 459, 1500)
 account1.transfer(5000, account2)
-# puts account1.balance, account2.balance
+#puts account1.balance, account2.balance
 
 user1 = User.new('user_name',[account1, account3])
 #puts user1.total_balance
