@@ -43,7 +43,12 @@ class User
     end
 end
 
-#account1 = BankAccount.new('Banco Estado', 987, 5000)
-#account2 = BankAccount.new('Santander', 456, 5000)
-#account1.transfer(5000, account2)
-#puts account1.balance, account2.balance
+#transferencia entre 2 cuentas
+account1 = BankAccount.new('Banco de Chile', 987, 5000)
+account2 = BankAccount.new('Banco Estado', 456, 5000)
+account1.transfer(5000, account2)
+
+#saldo total de todas las cuentas de un usuario
+account3 = BankAccount.new('Santander', 457, 2500)
+user = User.new('Alexis Sanchez', [account2, account3])
+user.total_balance
