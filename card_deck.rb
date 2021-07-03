@@ -4,43 +4,40 @@
 require_relative 'card.rb'
 
 class CardDeck
-    attr_reader :cards, :new_deck
-
-    def initialize(cards)
-        valid_array(cards)
-        cards.each do |i|
-            cards.each do |j|
-                @cards << Card.new(i.number, j.kind)
-            end
-        end
+    attr_accessor :cards
+    attr_reader :new_deck
+    def initialize(cards = [])
+        @cards = cards
+        create_deck
     end
 
-    def shuffle_deck()
+    def create_deck
+        (1..13).each do |i|
+            (%w[C D E T]).each {|j| self.cards << Card.new(i, j)}
+        end
+    end 
+
+    def shuffle_deck
         @new_deck = self.cards.shuffle
     end
 
-    def remove_first_card()
+    def remove_first_card
         self.new_deck.shift
     end
 
-    def share()
-        self.new_deck.shift(3)
-    end
-
-    def valid_array(cards)
-        if cards.class != Array and cards.empty? 
-            raise "Se require un array con al menos una carta" 
-        end
-        @cards = Array.new
+    def share
+        self.new_deck.shift(5)
     end
 end
 
-deck = CardDeck.new(Array[Card.new(8,'C'), Card.new(2, 'D'), Card.new(1, 'T')])
+# crear full deck
+full_deck = CardDeck.new
 
-puts deck.cards
-puts
-puts deck.shuffle_deck
-puts
-puts deck.remove_first_card
-puts
-puts deck.share
+# #barajar
+full_deck.shuffle_deck
+
+# #remover la primera carta 
+full_deck.remove_first_card
+
+#repartir las 5 primeras cartas
+full_deck.share
