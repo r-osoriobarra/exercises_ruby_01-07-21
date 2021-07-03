@@ -1,7 +1,7 @@
 #Desafío cuentas bancarias y barajas de cartas
 #Ejercicio 2
 
-require_relative 'card'
+require_relative 'card.rb'
 
 class CardDeck
     attr_reader :cards, :new_deck
@@ -15,14 +15,6 @@ class CardDeck
         end
     end
 
-    def valid_array(cards)
-        if cards.class != Array and cards.empty? 
-            raise "Se require un array con al menos una carta" 
-        else
-            @cards = Array.new
-        end
-    end
-
     def shuffle_deck()
         @new_deck = self.cards.shuffle
     end
@@ -33,6 +25,13 @@ class CardDeck
 
     def share()
         self.new_deck.shift(3)
+    end
+
+    def valid_array(cards)
+        if cards.class != Array and cards.empty? 
+            raise "Se require un array con al menos una carta" 
+        end
+        @cards = Array.new
     end
 end
 
