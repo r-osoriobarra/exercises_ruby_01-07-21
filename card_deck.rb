@@ -4,8 +4,7 @@
 require_relative 'card.rb'
 
 class CardDeck
-    attr_accessor :cards
-    attr_reader :new_deck
+    attr_reader :cards, :new_deck
     def initialize(cards = [])
         @cards = cards
         create_deck
@@ -21,11 +20,11 @@ class CardDeck
         @new_deck = self.cards.shuffle
     end
 
-    def remove_first_card
+    def draw_first_card
         self.new_deck.pop
     end
 
-    def share
+    def deal_cards
         self.new_deck.pop(5)
     end
 end
@@ -34,10 +33,10 @@ end
 full_deck = CardDeck.new
 
 # #barajar
-puts full_deck.shuffle_deck
+full_deck.shuffle_deck
 
 # #remover la primera carta 
-puts full_deck.remove_first_card
+full_deck.draw_first_card
 
 #repartir las 5 primeras cartas
-puts full_deck.share
+full_deck.deal_cards

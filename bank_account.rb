@@ -2,7 +2,7 @@
 #Ejercicio 1
 
 class BankAccount
-    attr_reader :bank_name, :number_account, :ammount, :transfer_account
+    attr_reader :bank_name, :number_account, :amount, :transfer_account
     attr_accessor :balance
     def initialize(bank_name, number_account, balance = 0)
         @bank_name = bank_name
@@ -10,15 +10,15 @@ class BankAccount
         @balance = balance
     end
 
-    def transfer(ammount, transfer_account)
-        valid_transfer(ammount)
-        self.balance -= self.ammount
-        transfer_account.balance += self.ammount
+    def transfer(amount, transfer_account)
+        valid_transfer(amount)
+        self.balance -= self.amount
+        transfer_account.balance += self.amount
     end
 
-    def valid_transfer(ammount)
-        raise "Saldo insuficiente" if ammount > self.balance 
-        @ammount = ammount
+    def valid_transfer(amount)
+        raise "Saldo insuficiente" if amount > self.balance 
+        @amount = amount
     end
 end
 
