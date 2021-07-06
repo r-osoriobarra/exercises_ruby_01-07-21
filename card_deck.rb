@@ -22,11 +22,11 @@ class CardDeck
     end
 
     def remove_first_card
-        self.new_deck.shift
+        self.new_deck.pop
     end
 
     def share
-        self.new_deck.shift(5)
+        self.new_deck.pop(5)
     end
 end
 
@@ -34,10 +34,10 @@ end
 full_deck = CardDeck.new
 
 # #barajar
-full_deck.shuffle_deck
+puts full_deck.shuffle_deck
 
 # #remover la primera carta 
-full_deck.remove_first_card
+puts full_deck.remove_first_card
 
 #repartir las 5 primeras cartas
-full_deck.share
+puts full_deck.share
