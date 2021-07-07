@@ -36,7 +36,7 @@ class User
     end
 
     def valid_array(bank_accounts)
-        if bank_accounts.class != Array and bank_accounts.empty? 
+        if bank_accounts.class != Array or bank_accounts.empty? 
             raise "Se require un array con al menos una cuenta bancaria" 
         end
         @bank_accounts = bank_accounts        
